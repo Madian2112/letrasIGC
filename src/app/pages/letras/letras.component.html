@@ -1,0 +1,93 @@
+<div class="pdf-reader">
+    <ng-container *ngIf="selectedPdf; else pdfList">
+      <div class="pdf-viewer">
+        <button class="back-button" (click)="handleClosePdf()">
+          <i class="pi pi-arrow-left"></i>
+          <span>Regresar</span>
+        </button>
+        <h2 style="margin-top: -1rem;">{{ selectedPdf.title }}</h2>
+        <div class="pdf-container">
+          <iframe [src]="getSafeUrl(selectedPdf.url)" [title]="selectedPdf.title"></iframe>
+        </div>
+      </div>
+    </ng-container>
+  
+    <ng-template #pdfList>
+      <!-- Top Navigation -->
+      <header class="top-nav">
+        <div class="search-container">
+          <i class="pi pi-home home-icon"></i>
+          <div class="search-input-container">
+            <i class="pi pi-file search-icon"></i>
+            <input
+              type="text"
+              placeholder="¿Qué documento quieres leer?"
+              [(ngModel)]="searchQuery"
+              (ngModelChange)="filterPdfs()"
+              class="search-input"
+            />
+          </div>
+        </div>
+      </header>
+  
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="hero-section">
+          <div class="hero-image">
+            <h1 class="hero-title">Letras IGC</h1>
+          </div>
+          <div class="hero-info">
+            <h6 class="hero-subtitle">Lista pública</h6>
+            <div class="user-info">
+              <span class="user-details">
+                <span class="document-count"> • {{ filteredPdfs.length }} Elementos</span>
+              </span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- PDF List -->
+        <div class="pdf-list">
+          <table>
+            <thead>
+              <tr>
+                <th>Ver</th>
+                <th>#</th>
+                <th>Título</th>
+                <th>Fecha</th>
+                <th>Descargar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pdf of filteredPdfs; let i = index" class="pdf-item">
+                <td>
+                  <button class="view-button" (click)="handleViewPdf(pdf)">
+                    <i class="pi pi-eye"></i>
+                    <span>Ver</span>
+                  </button>
+                </td>
+                <td>{{ i + 1 }}</td>
+                <td>
+                  <div class="pdf-title">
+                    <div class="pdf-icon">
+                      <i class="pi pi-file"></i>
+                    </div>
+                    <span>{{ pdf.title }}</span>
+                  </div>
+                </td>
+                <td>{{ pdf.dateAdded }}</td>
+                <td>
+                  <a [href]="pdf.url" download class="download-button">
+                    <i class="pi pi-download"></i>
+                    <span>Descargar</span>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </ng-template>
+  </div>
+  
+  
