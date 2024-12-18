@@ -1,93 +1,113 @@
 <div class="pdf-reader">
-    <ng-container *ngIf="selectedPdf; else pdfList">
-      <div class="pdf-viewer">
+  <ng-container *ngIf="selectedPdf; else pdfList">
+    <div class="pdf-viewer">
+      <div class="pdf-controls">
         <button class="back-button" (click)="handleClosePdf()">
           <i class="pi pi-arrow-left"></i>
           <span>Regresar</span>
         </button>
-        <h2 style="margin-top: -1rem;">{{ selectedPdf.title }}</h2>
-        <div class="pdf-container">
-          <iframe [src]="getSafeUrl(selectedPdf.url)" [title]="selectedPdf.title"></iframe>
+        <h2>{{ selectedPdf.title }}</h2>
+        <div class="zoom-controls">
+          <button (click)="zoomOut()" [disabled]="zoom <= minZoom">
+            <i class="pi pi-minus"></i>
+          </button>
+          <span>{{ (zoom * 100).toFixed(0) }}%</span>
+          <button (click)="zoomIn()" [disabled]="zoom >= maxZoom">
+            <i class="pi pi-plus"></i>
+          </button>
+          <button (click)="resetZoom()" [disabled]="zoom === 1">
+            <i class="pi pi-refresh"></i>
+          </button>
         </div>
       </div>
-    </ng-container>
-  
-    <ng-template #pdfList>
-      <!-- Top Navigation -->
-      <header class="top-nav">
-        <div class="search-container">
-          <i class="pi pi-home home-icon"></i>
-          <div class="search-input-container">
-            <i class="pi pi-file search-icon"></i>
-            <input
-              type="text"
-              placeholder="¿Qué documento quieres leer?"
-              [(ngModel)]="searchQuery"
-              (ngModelChange)="filterPdfs()"
-              class="search-input"
-            />
+      <div class="pdf-container" #pdfViewer>
+        <ng-container *ngIf="pdfSrc">
+          <pdf-viewer [src]="pdfSrc"
+                      [render-text]="true"
+                      [original-size]="false"
+                      [fit-to-page]="true"
+                      [zoom]="zoom"
+                      [show-all]="true"
+                      [autoresize]="true"
+                      [stick-to-page]="false"
+                      (after-load-complete)="onPdfLoaded($event)"
+                      style="width: 100%; height: 100%;">
+          </pdf-viewer>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #pdfList>
+    <header class="top-nav">
+      <div class="search-container">
+        <i class="pi pi-home home-icon"></i>
+        <div class="search-input-container">
+          <i class="pi pi-file search-icon"></i>
+          <input
+            type="text"
+            placeholder="¿Qué documento quieres leer?"
+            [(ngModel)]="searchQuery"
+            (ngModelChange)="filterPdfs()"
+            class="search-input"
+          />
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="hero-section">
+        <div class="hero-image">
+          <h1 class="hero-title">Canciones IGC</h1>
+        </div>
+        <div class="hero-info">
+          <div class="user-info">
+            <span class="user-details">
+              <span class="document-count"> • {{ filteredPdfs.length }} Canciones</span>
+            </span>
           </div>
         </div>
-      </header>
-  
-      <!-- Main Content -->
-      <main class="main-content">
-        <div class="hero-section">
-          <div class="hero-image">
-            <h1 class="hero-title">Letras IGC</h1>
-          </div>
-          <div class="hero-info">
-            <h6 class="hero-subtitle">Lista pública</h6>
-            <div class="user-info">
-              <span class="user-details">
-                <span class="document-count"> • {{ filteredPdfs.length }} Elementos</span>
-              </span>
-            </div>
-          </div>
-        </div>
-  
-        <!-- PDF List -->
-        <div class="pdf-list">
-          <table>
-            <thead>
-              <tr>
-                <th>Ver</th>
-                <th>#</th>
-                <th>Título</th>
-                <th>Fecha</th>
-                <th>Descargar</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let pdf of filteredPdfs; let i = index" class="pdf-item">
-                <td>
-                  <button class="view-button" (click)="handleViewPdf(pdf)">
-                    <i class="pi pi-eye"></i>
-                    <span>Ver</span>
-                  </button>
-                </td>
-                <td>{{ i + 1 }}</td>
-                <td>
-                  <div class="pdf-title">
-                    <div class="pdf-icon">
-                      <i class="pi pi-file"></i>
-                    </div>
-                    <span>{{ pdf.title }}</span>
+      </div>
+
+      <div class="pdf-list">
+        <table>
+          <thead>
+            <tr>
+              <th>Ver</th>
+              <th>#</th>
+              <th>Título</th>
+              <th>Fecha</th>
+              <th>Descargar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pdf of filteredPdfs; let i = index" class="pdf-item">
+              <td>
+                <button class="view-button" (click)="handleViewPdf(pdf)">
+                  <i class="pi pi-eye"></i>
+                  <span>Ver</span>
+                </button>
+              </td>
+              <td>{{ i + 1 }}</td>
+              <td>
+                <div class="pdf-title">
+                  <div class="pdf-icon">
+                    <i class="pi pi-file"></i>
                   </div>
-                </td>
-                <td>{{ pdf.dateAdded }}</td>
-                <td>
-                  <a [href]="pdf.url" download class="download-button">
-                    <i class="pi pi-download"></i>
-                    <span>Descargar</span>
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </main>
-    </ng-template>
-  </div>
-  
-  
+                  <span>{{ pdf.title }}</span>
+                </div>
+              </td>
+              <td>{{ pdf.dateAdded }}</td>
+              <td>
+                <a [href]="pdf.url" download class="download-button">
+                  <i class="pi pi-download"></i>
+                  <span>Descargar</span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </ng-template>
+</div>

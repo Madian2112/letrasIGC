@@ -7,6 +7,7 @@ import { LetrasComponent } from './pages/letras/letras.component';
 import { FormsModule } from '@angular/forms';
 import { LucideAngularModule } from 'lucide-angular';
 import { Bell, Users, Home, Eye, Download, ArrowLeft, FileText } from 'lucide-angular';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { Bell, Users, Home, Eye, Download, ArrowLeft, FileText } from 'lucide-an
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    LucideAngularModule.pick({ Bell, Users, Home, Eye, Download, ArrowLeft, FileText })  
+    LucideAngularModule.pick({ Bell, Users, Home, Eye, Download, ArrowLeft, FileText }),
+    PdfViewerModule  
   ],
   providers: [],
   bootstrap: [AppComponent]
