@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { LucideAngularModule } from 'lucide-angular';
 import { Bell, Users, Home, Eye, Download, ArrowLeft, FileText } from 'lucide-angular';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     AppRoutingModule,
     FormsModule,
     LucideAngularModule.pick({ Bell, Users, Home, Eye, Download, ArrowLeft, FileText }),
-    PdfViewerModule  
+    PdfViewerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

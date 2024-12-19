@@ -1,0 +1,30 @@
+{
+    "usuarios": [
+      { "title": "Alaba al Señor", "url": "assets/pdf/LETRA_Alaba_Al_Señor.pdf", "version": "Estándar   " },
+      { "title": "Salmo 84", "url": "assets/pdf/LETRA_Salmo_84.pdf", "version": "Danilo Montero" },
+      { "title": "A ti Adoramos", "url": "assets/pdf/LETRA_A_Ti_Adoramos.pdf", "version": "Estándar" },
+      { "title": "Abre mis Ojos", "url": "assets/pdf/LETRA_Abre_mis_ojos.pdf", "version": "Ethnos" },
+      { "title": "Agnus Dei", "url": "assets/pdf/LETRA_Agnus_Dei.pdf", "version": "Ethnos" },
+      { "title": "Al que es Digno - Venció", "url": "assets/pdf/LETRA_AL_QUE_ES_DIGNO_+_VENCIO.pdf", "version": "Marcos Witt" },
+      { "title": "Alaba", "url": "assets/pdf/LETRA_Alaba.pdf", "version": "Evan Craft" },
+      { "title": "Ambición Secreta", "url": "assets/pdf/LETRA_Ambición_Secreta.pdf", "version": "Estándar" },
+      { "title": "Amor sin Condición", "url": "assets/pdf/LETRA_Amor_Sin_Condición_(Zion).pdf", "version": "Evan Craft" },
+      { "title": "Ángeles Cantando", "url": "assets/pdf/LETRA_Angeles_Cantando_Están.pdf", "version": "Tommee Profitt - Nicole Serrano" },
+      { "title": "Ante tu Presencia", "url": "assets/pdf/LETRA_Ante_tu_presencia.pdf", "version": "Ethnos" },
+      { "title": "Aquí Está", "url": "assets/pdf/LETRA_Aqui_Esta_(Te Adoro a Ti).pdf", "version": "Passion" },
+      { "title": "Babel", "url": "assets/pdf/LETRA_Babel.pdf", "version": "Un Corazón" },
+      { "title": "Bendito Sea el Nombre", "url": "assets/pdf/LETRA_Bendito_sea_el_nombre.pdf", "version": "Estándar" },
+      { "title": "Cante a Ti", "url": "assets/pdf/LETRA_Cante_a_Ti.pdf", "version": "Estándar" },
+      { "title": "Canto de Adoración", "url": "assets/pdf/LETRA_Canto_de_Adoración.pdf", "version": "Ethnos" },
+      { "title": "Celeste Voz", "url": "assets/pdf/LETRA_Celeste_Voz.pdf", "version": "Lincoln Brewster" },
+      { "title": "Con Todo", "url": "assets/pdf/LETRA_Con_Todo.pdf", "version": "Hillsong" },
+      { "title": "Conmigo Estás", "url": "assets/pdf/LETRA_Conmigo_Estás.pdf", "version": "GCLA" },
+      { "title": "Diez Veces Más", "url": "assets/pdf/LETRA_Diez_Veces_Mas.pdf", "version": "GCLA, Rony Pavón" },
+      { "title": "Dios el más Grande", "url": "assets/pdf/LETRA_Dios_el_más_Grande.pdf", "version": "Clase Canto" },
+      { "title": "Dios tanto Amó", "url": "assets/pdf/LETRA_Dios_tanto_amó.pdf", "version": "We The Kingdom" },
+
+      { "title": "Eco", "url": "assets/pdf/LETRA_ECO.pdf", "version": "Tauren Wells" },
+      { "title": "Es el Rey Legado", "url": "assets/pdf/LETRA_El_es_Rey_Legado.pdf", "version": "Estándar" }
+    ]
+}
+  
