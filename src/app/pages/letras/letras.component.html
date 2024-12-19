@@ -9,14 +9,14 @@
         <h2>{{ selectedPdf.title }}</h2>
         <div class="zoom-controls">
           <button (click)="zoomOut()" [disabled]="zoom <= minZoom">
-            <i class="pi pi-minus"></i>
+            <i style="font-size: 2rem;" class="pi pi-minus"></i>
           </button>
           <span>{{ (zoom * 100).toFixed(0) }}%</span>
           <button (click)="zoomIn()" [disabled]="zoom >= maxZoom">
-            <i class="pi pi-plus"></i>
+            <i style="font-size: 2rem;" class="pi pi-plus"></i>
           </button>
           <button (click)="resetZoom()" [disabled]="zoom === 1">
-            <i class="pi pi-refresh"></i>
+            <i style="font-size: 2rem;" class="pi pi-refresh"></i>
           </button>
         </div>
       </div>
@@ -43,10 +43,10 @@
       <div class="search-container">
         <i class="pi pi-home home-icon"></i>
         <div class="search-input-container">
-          <i class="pi pi-file search-icon"></i>
+          <i class="pi pi-search search-icon"></i>
           <input
             type="text"
-            placeholder="¿Qué documento quieres leer?"
+            placeholder="¿Qué canción estas buscando?"
             [(ngModel)]="searchQuery"
             (ngModelChange)="filterPdfs()"
             class="search-input"
@@ -76,7 +76,7 @@
               <th>Ver</th>
               <th>#</th>
               <th>Título</th>
-              <th>Fecha</th>
+              <th>Versión</th>
               <th>Descargar</th>
             </tr>
           </thead>
@@ -92,12 +92,12 @@
               <td>
                 <div class="pdf-title">
                   <div class="pdf-icon">
-                    <i class="pi pi-file"></i>
+                    <i style="font-size: 1.2rem;" class="pi pi-file"></i>
                   </div>
                   <span>{{ pdf.title }}</span>
                 </div>
               </td>
-              <td>{{ pdf.dateAdded }}</td>
+              <td>{{ pdf.version }}</td>
               <td>
                 <a [href]="pdf.url" download class="download-button">
                   <i class="pi pi-download"></i>
@@ -111,3 +111,4 @@
     </main>
   </ng-template>
 </div>
+
