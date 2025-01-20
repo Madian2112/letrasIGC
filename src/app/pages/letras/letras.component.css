@@ -506,4 +506,23 @@
   }
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50%;
+  padding: 5px;
+  margin-right: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo-image {
+  height: 40px;
+  width: auto;
+  filter: brightness(1.1) contrast(1.2);
+  margin-right: 10px; /* Añade un poco de espacio a la derecha del logo */
+}
+
+
 /* Mantén los demás estilos existentes */
